@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hello, world.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Fraunces:opsz,wght@9..144,300;9..144,700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #0e0e0c;
+      --ink: #f4f1ea;
+      --accent: #ff5b1f;
+      --muted: #6b6960;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      position: relative;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 91, 31, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 91, 31, 0.05), transparent 50%);
+    }
+
+    /* sottile reticolato */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(244, 241, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 241, 234, 0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    main {
+      position: relative;
+      text-align: left;
+      padding: 0 2rem;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease 0.1s forwards;
+    }
+
+    .meta .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .prompt {
+      font-size: 0.95rem;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeIn 0.6s ease 0.9s forwards;
+    }
+
+    .prompt .arrow { color: var(--accent); margin-right: 0.5rem; }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.1em;
+      background: var(--ink);
+      vertical-align: text-bottom;
+      margin-left: 4px;
+      animation: blink 1s steps(2) infinite;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 0.6s ease 1.4s forwards;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="meta">
+      <span><span class="dot"></span>online</span>
+      <span>v0.1.0</span>
+    </div>
+
+    <h1>hello,<br /><em>world.</em></h1>
+
+    <div class="prompt">
+      <span class="arrow">→</span>deployed from bitbucket<span class="cursor"></span>
+    </div>
+  </main>
+
+  <footer>Men At Code · 2026</footer>
+</body>
+</html>
